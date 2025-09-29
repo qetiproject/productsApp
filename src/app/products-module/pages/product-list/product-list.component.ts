@@ -1,7 +1,10 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { InputSearch } from "../../../components/input-search/input-search";
+import { FilterPipe } from "../../../components/pipes/filter.pipe";
 import { ProductItemComponent } from '../../components/product-item/product-item.component';
+import { Product } from '../../models/Product';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -12,8 +15,10 @@ import { ProductService } from '../../services/product.service';
   imports: [
     FormsModule,
     AsyncPipe,
-    ProductItemComponent
-  ],
+    ProductItemComponent,
+    InputSearch,
+    FilterPipe
+],
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class ProductListComponent implements OnInit{
@@ -56,7 +61,15 @@ export class ProductListComponent implements OnInit{
   products$ = this.#productService.products$;
   searchTerm: string = '';
 
+  getProductKeys(product: Product): string[] {
+    return [product.name.toLowerCase(), product.category.toLowerCase()]
+  }
+  
   ngOnInit(): void {
     this.#productService.getProducts();
+  }
+
+  onSearchEvent(value: string) {
+    this.searchTerm = value;
   }
 }
