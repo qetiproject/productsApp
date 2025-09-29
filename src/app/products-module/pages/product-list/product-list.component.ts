@@ -1,12 +1,12 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { distinctUntilChanged, tap } from 'rxjs';
-import { InputSearch } from "../../../components/input-search/input-search";
-import { FilterPipe } from "../../../components/pipes/filter.pipe";
-import { ProductItemComponent } from '../../components/product-item/product-item.component';
-import { Product } from '../../models/Product';
-import { ProductService } from '../../services/product.service';
+import { InputSearch } from '@app/components/input-search/input-search';
+import { FilterPipe } from '@app/pipes/filter.pipe';
+import { ProductItemComponent } from '@app/products-module/components/product-item/product-item.component';
+import { Product } from '@app/products-module/models/Product';
+import { ProductService } from '@app/products-module/services/product.service';
+import { distinctUntilChanged, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-list',

@@ -1,8 +1,8 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
+import { Product } from '@app/products-module/models/Product';
+import { ProductService } from '@app/products-module/services/product.service';
 import { filter, firstValueFrom, map } from 'rxjs';
-import { Product } from '../../models/Product';
-import { ProductService } from '../../services/product.service';
 
 export const ProductDetailsResolver: ResolveFn<Product | undefined> = async (
   route: ActivatedRouteSnapshot

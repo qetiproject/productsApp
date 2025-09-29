@@ -1,8 +1,8 @@
 import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { StockDirective } from '../../../components/directives/stock.directive';
-import { ProductDetails } from '../../models/Product';
+import { StockDirective } from '@app/directives/stock.directive';
+import { ProductDetails } from '@app/products-module/models/Product';
 
 @Component({
   selector: 'app-product-detail',

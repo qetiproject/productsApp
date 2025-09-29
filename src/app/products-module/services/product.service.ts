@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
+import { environment } from '@app/environments/environment.development';
+import { Product } from '@app/products-module/models/Product';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { of } from 'rxjs/internal/observable/of';
 import { catchError } from 'rxjs/operators';
-import { environment } from '../../environments/environment.development';
-import { Product } from '../models/Product';
 
 @Injectable()
 export class ProductService {
