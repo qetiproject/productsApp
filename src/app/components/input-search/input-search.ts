@@ -8,19 +8,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs';
   standalone: true,
   imports: [ReactiveFormsModule],
   template: `<input type="text" [formControl] ="searchControl"/>`,
-  styles: `
-    input {
-    padding: .5rem .75rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    outline: none;
-    transition: border-color .2s;
-    margin-bottom: 1rem;
-
-    &:focus {
-        border-color: $primary;
-    }
-}`
+  styleUrls: ['./input-search.scss']
 })
 export class InputSearch{
   searchControl = new FormControl<string>('', { nonNullable: true});

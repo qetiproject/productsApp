@@ -6,20 +6,8 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment.development';
 import { Product } from '../models/Product';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class ProductService {
-  http = inject(HttpClient);
-
-  // products$ = new BehaviorSubject<any[]>([]);
-  // selectedProduct$ = new Subject<any>();
-
-  // constructor() {
-  //   this.http.get<any[]>('assets/data/products.json').subscribe(d => {
-  //     this.products$.next(d);
-  //   });
-  // }
-
-
   // getProductAndThenReload(id: any) {
   //   this.http.get<any[]>('/assets/data/products.json').subscribe(list => {
   //     of(list).pipe(
@@ -32,14 +20,6 @@ export class ProductService {
 
   //       this.selectedProduct$.next(final);
   //     });
-  //   });
-  // }
-
-
-  // getById(id: any) {
-  //   return this.http.get<any[]>('/assets/data/products.json').subscribe(all => {
-  //     const found = all.find(x => x.id == id);
-  //     this.selectedProduct$.next(found);
   //   });
   // }
 
