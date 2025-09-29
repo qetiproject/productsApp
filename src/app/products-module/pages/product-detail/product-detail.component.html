@@ -1,0 +1,14 @@
+@if(productDetails) {
+  <div class="detail">
+    <h3>Details: {{ productDetails.name }}</h3>
+    <div class="price">Price: {{ productDetails.price | currency }}</div>
+    <div>Category: {{ productDetails.category }}</div>
+    <div class="stock" [appStockClass]="productDetails.stock">
+      Stock: {{ productDetails.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+    </div>
+    <div>
+      Last seen: {{ productDetails.lastSeen | date:'short' }}
+    </div>
+    <button (click)="discount()">Apply 10% discount</button>
+  </div>
+}

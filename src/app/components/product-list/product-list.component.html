@@ -1,9 +1,0 @@
-<h2>Products</h2>
-<input [(ngModel)]="filterText" />
-<button (click)="reload()">Reload</button>
-<ul>
-  <li *ngFor="let p of filtered()">
-    {{p.name}} - {{p.price}}
-    <button (click)="pick(p.id)">Pick</button>
-  </li>
-</ul>

@@ -1,0 +1,14 @@
+$primary: #4f46e5;
+
+input {
+    padding: .5rem .75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color .2s;
+    margin-bottom: 1rem;
+
+    &:focus {
+        border-color: $primary;
+    }
+}
