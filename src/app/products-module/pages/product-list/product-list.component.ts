@@ -8,7 +8,7 @@ import { Product } from '@app/products-module/models/Product';
 import { deleteProduct, loadProducts } from '@app/products-module/store/product.action';
 import { selectAllProducts, selectLoading } from '@app/products-module/store/product.selector';
 import { Store } from '@ngrx/store';
-import { distinctUntilChanged, tap } from 'rxjs/operators';
+import { distinctUntilChanged, first, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-list',
@@ -39,7 +39,15 @@ export class ProductListComponent implements OnInit{
   }
   
   ngOnInit(): void {
-    this.store.dispatch(loadProducts());
+    this.getProducts()
+  }
+
+  getProducts(): void {
+    this.store.select(selectAllProducts).pipe(first()).subscribe(products => {
+      if (!products.length) {
+        this.store.dispatch(loadProducts());
+      }
+    });
   }
 
   onSearchEvent(value: string) {

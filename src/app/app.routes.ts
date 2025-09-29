@@ -5,11 +5,7 @@ import { ProductDetailsResolver } from './products-module/pages/product-detail/p
 import { ProductListComponent } from './products-module/pages/product-list/product-list.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'products',
-    pathMatch: 'full'
-  },
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
   {
     path: 'products',
     children: [
@@ -17,12 +13,11 @@ export const routes: Routes = [
       { 
         path: ':id', 
         component: ProductDetailComponent, 
-        resolve: { productDetails: ProductDetailsResolver},
+        resolve: { productDetails: ProductDetailsResolver },
         canActivate: [UserPermission],
       },
     ],
   },
-  {
-    path: '**', redirectTo: 'products'
-  }
+  { path: '**', redirectTo: 'products' }
 ];
+

@@ -16,4 +16,5 @@ export class ProductItemComponent {
   deleteProduct() {
     this.delete.emit(this.product);
   }
+  
 }
