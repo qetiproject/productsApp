@@ -1,4 +1,4 @@
-export const Environment = {
+export const environment = {
     production:  false,
-    assets: '/public/assets/products.json'
+    baseUrl: '/assets/data/products.json'
 }

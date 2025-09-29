@@ -1,4 +1,4 @@
-<h2>Products</h2>
+<!-- <h2>Products</h2>
 <input [(ngModel)]="filterText" />
 <button (click)="reload()">Reload</button>
 <ul>
@@ -6,4 +6,11 @@
     {{p.name}} - {{p.price}}
     <button (click)="pick(p.id)">Pick</button>
   </li>
+</ul> -->
+
+@let products = products$ | async;
+  <ul>
+    @for ( product of products; track product.id) {
+      <app-product-item [product]="product"></app-product-item>
+    }
 </ul>
