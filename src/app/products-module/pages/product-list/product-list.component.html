@@ -10,6 +10,13 @@
 
 <h2 class="productsTitle">Products</h2>
 <app-input-search (search)="onSearchEvent($event)"></app-input-search>
+
+@if (loading$ | async ) {
+  <div  class="loading">
+    Loading products...
+  </div>
+}
+
 @let products = products$ | async;
   <ul class="products">
     @for ( product of products | filter: searchTerm: getProductKeys;; track product.id) {

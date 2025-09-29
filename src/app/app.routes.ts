@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { ProductDetailComponent } from './products-module/pages/product-detail/product-detail.component';
 import { ProductDetailsResolver } from './products-module/pages/product-detail/product-details.resolver';
 import { ProductListComponent } from './products-module/pages/product-list/product-list.component';
-import { ProductService } from './products-module/services/product.service';
 
 export const routes: Routes = [
   {
@@ -16,7 +15,6 @@ export const routes: Routes = [
       { path: '', component: ProductListComponent },
       { path: ':id', component: ProductDetailComponent, resolve: { productDetails: ProductDetailsResolver} },
     ],
-    providers: [ProductService]
   },
   {
     path: '**', redirectTo: 'products'

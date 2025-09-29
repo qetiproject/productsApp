@@ -1,7 +1,7 @@
 import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { StockDirective } from '@app/directives/stock.directive';
+import { StockDirective } from '@app/features/directives/stock.directive';
 import { ProductDetails } from '@app/products-module/models/Product';
 
 @Component({
