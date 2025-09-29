@@ -1,0 +1,12 @@
+[
+  { "id": 1, "name": "Ultra Phone X", "price": 999.99, "category": "Phones", "stock": 5, "rating": 4.1 },
+  { "id": 2, "name": "Ultra Phone X", "price": 999.99, "category": "Phones", "stock": 4, "rating": 4.2 },
+  { "id": 3, "name": "Budget Phone A", "price": 149.99, "category": "Phones", "stock": 0, "rating": 3.8 },
+  { "id": 4, "name": "Laptop Pro 15", "price": 1999.00, "category": "Laptops", "stock": 2, "rating": 4.9 },
+  { "id": 5, "name": "Laptop Pro 15", "price": 1999.00, "category": "Laptops", "stock": 2, "rating": 4.9 },
+  { "id": 6, "name": "Mouse Basic", "price": 9.99, "category": "Accessories", "stock": 100, "rating": 3.0 },
+  { "id": 7, "name": "Gaming Mouse RGB", "price": 59.99, "category": "Accessories", "stock": 8, "rating": 4.4 },
+  { "id": 8, "name": "Monitor 27 60Hz", "price": 169.99, "category": "Monitors", "stock": 1, "rating": 3.7 },
+  { "id": 9, "name": "Monitor 27 144Hz", "price": 349.99, "category": "Monitors", "stock": 0, "rating": 4.5 },
+  { "id": 10, "name": "Keyboard Clicky", "price": 79.99, "category": "Accessories", "stock": 3, "rating": 4.0 }
+]
