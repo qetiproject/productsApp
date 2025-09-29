@@ -3,8 +3,8 @@
     <h3>Details: {{ product.name }}</h3>
     <div class="price">Price: {{ product.price | currency }}</div>
     <div>Category: {{ product.category }}</div>
-    <div class="stock" [ngClass]="stockClass(product.stock)">
-      Stock: {{ product.stock }}
+    <div class="stock" [appStockClass]="product.stock">
+      Stock: {{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}
     </div>
     <div>
       Last seen: {{ product.lastSeen | date:'short' }}

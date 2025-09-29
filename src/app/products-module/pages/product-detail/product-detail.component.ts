@@ -1,22 +1,23 @@
-import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { StockDirective } from '../../../components/directives/stock.directive';
 import { Product } from '../../models/Product';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
   imports: [
-    NgClass,
     DatePipe,
-    CurrencyPipe
-  ],
+    CurrencyPipe,
+    CommonModule,
+    StockDirective
+],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductDetailComponent {
-  stockClass(s: any) { return s > 0 ? 'in' : 'out'; }
-
   #route = inject(ActivatedRoute);
   product?: Product;
 
