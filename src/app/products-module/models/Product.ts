@@ -14,4 +14,5 @@ export interface Product {
   category: string;
   stock: number;
   rating: number;
+  lastSeen?: number;
 }
