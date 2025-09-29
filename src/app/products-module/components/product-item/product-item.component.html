@@ -5,6 +5,6 @@
 
   <div class="actions">
     <button class="btn" [routerLink]="['/products', product.id]">Edit</button>
-    <button class="btn" >Delete</button>
+    <button class="btn" (click)="deleteProduct()">Delete</button>
   </div>
 </li>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product } from '@app/products-module/models/Product';
 
@@ -11,4 +11,9 @@ import { Product } from '@app/products-module/models/Product';
 })
 export class ProductItemComponent {
   @Input() product!: Product;
+  @Output() delete = new EventEmitter<Product>();
+
+  deleteProduct() {
+    this.delete.emit(this.product);
+  }
 }

@@ -11,12 +11,7 @@ export const loadProductsFailure = createAction(
   props<{ error: string }>()
 );
 
-export const deleteProduct = createAction('[Product] Delete Product', props<{id: number}>);
-export const deleteProductSuccess  = createAction(
-  '[Product] Delete Product Success',
+export const deleteProduct = createAction(
+  '[Product] Delete Product',
   props<{ id: number }>()
-);
-export const deleteProductFailure = createAction(
-  '[Product] Delete Product Failure',
-  props<{ error: string }>()
 );

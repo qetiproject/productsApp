@@ -20,6 +20,9 @@
 @let products = products$ | async;
   <ul class="products">
     @for ( product of products | filter: searchTerm: getProductKeys;; track product.id) {
-      <app-product-item [product]="product"></app-product-item>
+      <app-product-item 
+        [product]="product" 
+        (delete)="onDeleteProductEvent($event)">
+      </app-product-item>
     }
 </ul>
