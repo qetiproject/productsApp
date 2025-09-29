@@ -1,18 +1,19 @@
-// export interface Product {
-//   id: number;
-//   name: string;
-//   price: number;
-//   category?: string;
-//   stock?: number;
-//   rating?: number;
-// }
-
 export interface Product {
   id: number;
   name: string;
   price: number;
-  category: string;
+  category: ProductCategories;
+}
+
+export type ProductDetails = Product & {
   stock: number;
   rating: number;
-  lastSeen?: number;
+  lastSeen: number;
+}
+
+export enum ProductCategories {
+  Phones = 'Phones',
+  Laptops = 'Laptops',
+  Accessories = 'Accessories',
+  Monitors = 'Monitors'
 }

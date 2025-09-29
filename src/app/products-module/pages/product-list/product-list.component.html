@@ -8,9 +8,10 @@
   </li>
 </ul> -->
 
+<h2 class="productsTitle">Products</h2>
 <app-input-search (search)="onSearchEvent($event)"></app-input-search>
 @let products = products$ | async;
-  <ul>
+  <ul class="products">
     @for ( product of products | filter: searchTerm: getProductKeys;; track product.id) {
       <app-product-item [product]="product"></app-product-item>
     }

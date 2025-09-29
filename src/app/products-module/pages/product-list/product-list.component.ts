@@ -20,11 +20,10 @@ import { ProductService } from '../../services/product.service';
     InputSearch,
     FilterPipe
   ],
-  providers: [ProductService],
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class ProductListComponent implements OnInit{
-  #productService = inject(ProductService, { self: true});
+  #productService = inject(ProductService);
 
   products$ = this.#productService.products$.pipe(
     distinctUntilChanged((a, b) => a.length === b.length),

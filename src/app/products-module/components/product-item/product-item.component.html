@@ -1,4 +1,10 @@
-<li>
-    {{product.name}} - {{product.price}}
-    <!-- <button (click)="pick(p.id)">Pick</button> -->
+<li class="item">
+  <div class="info">
+    <span class="name"> {{product.name}} - {{product.price}}</span>
+  </div>
+
+  <div class="actions">
+    <button class="btn" [routerLink]="['/products', product.id]">Edit</button>
+    <button class="btn" >Delete</button>
+  </div>
 </li>

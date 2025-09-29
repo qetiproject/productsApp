@@ -2,7 +2,7 @@ import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StockDirective } from '../../../components/directives/stock.directive';
-import { Product } from '../../models/Product';
+import { ProductDetails } from '../../models/Product';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,15 +19,15 @@ import { Product } from '../../models/Product';
 })
 export class ProductDetailComponent {
   #route = inject(ActivatedRoute);
-  product?: Product;
+  productDetails!: ProductDetails;
 
   ngOnInit(): void {
-    this.product = this.#route.snapshot.data['product'];
+    this.productDetails = this.#route.snapshot.data['productDetails'];
   }
 
-  discount() {
-    if (this.product) {
-      this.product = { ...this.product, price: this.product.price * 0.9 };
+  discount(): void {
+    if (this.productDetails) {
+      this.productDetails = { ...this.productDetails, price: this.productDetails.price * 0.9 };
     }
   }
 
