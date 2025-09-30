@@ -6,9 +6,7 @@ import { distinctUntilChanged, Observable, tap } from 'rxjs';
 import { deleteProduct, loadProducts } from '../store/product.action';
 import { selectAllProducts, selectErrorProducts, selectLoadingProducts } from '../store/product.selector';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ProductFacade {
   #store = inject(Store);
 
@@ -23,18 +21,13 @@ export class ProductFacade {
 
   constructor() {
     this.currentLang$.pipe(distinctUntilChanged()).subscribe(lang => {
-      this.loadProducts(lang);
+      this.#store.dispatch(loadProducts({ lang }));
     });
-  }
-
-  loadProducts(lang: string) {
-    this.#store.dispatch(loadProducts({ lang }));
   }
 
   setLanguage(lang: string) {
     this.#store.dispatch(setLanguage({ lang }));
   }
-
 
   deleteProduct(id: number): void {
     this.#store.dispatch(deleteProduct({ id }));

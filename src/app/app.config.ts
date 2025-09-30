@@ -9,6 +9,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { productReducer } from '@products-module/store/product.reducer';
 import { routes } from './app.routes';
 import { LanguageInterceptor } from './core/interceptors/language.interceptor';
+import { languageReducer } from './core/store/language/language.reducer';
 import { ProductEffect } from './products-module/store/product.effect';
 import { customLoaderFactory } from './utils/custom-translater';
 
@@ -22,6 +23,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideStore({
       products: productReducer,
+      language: languageReducer
     }),
     provideEffects([ProductEffect]),
     provideStoreDevtools({

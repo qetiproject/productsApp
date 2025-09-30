@@ -9,6 +9,7 @@ export type ProductDetails = Product & {
   stock: number;
   rating: number;
   lastSeen: number;
+  lang: string;
 }
 
 export enum ProductCategories {
@@ -21,3 +22,5 @@ export enum ProductCategories {
 export interface ProductsByLang {
   [lang: string]: Product[];
 }
+
+export type ProductResponse = ProductDetails;
