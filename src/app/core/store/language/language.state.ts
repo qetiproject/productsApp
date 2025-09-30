@@ -3,5 +3,5 @@ export interface LanguageState {
 }
 
 export const initialLanguageState: LanguageState = {
-  currentLang: 'en',
+  currentLang: 'ka',
 };

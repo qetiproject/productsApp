@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Product } from '@app/products-module/models/Product';
 import { map, Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ProductService {
 
   loadProducts(lang: string): void {
     this.#http
-      .get<{ [key: string]: Product[] }>('/assets/i18n/products.json')
+      .get<{ [key: string]: Product[] }>(`${environment.baseUrl}`)
       .pipe(map(res => res[lang] ?? res['ka']))
       .subscribe(products => this.#productsSubject.next(products));
   }
