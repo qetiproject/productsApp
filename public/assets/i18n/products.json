@@ -1,0 +1,10 @@
+{
+  "en": [
+    { "id": 1, "name": "Ultra Phone X", "price": 999.99, "category": "Phones", "stock": 5, "rating": 4.1 },
+    { "id": 2, "name": "Budget Phone A", "price": 149.99, "category": "Phones", "stock": 0, "rating": 3.8 }
+  ],
+  "ka": [
+    { "id": 1, "name": "Ultra ტელეფონი X", "price": 999.99, "category": "ტელეფონები", "stock": 5, "rating": 4.1 },
+    { "id": 2, "name": "ბიუჯეტი ტელეფონი A", "price": 149.99, "category": "ტელეფონები", "stock": 0, "rating": 3.8 }
+  ]
+}

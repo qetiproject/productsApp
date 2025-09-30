@@ -1,13 +1,14 @@
 import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from "@ngrx/store-devtools";
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { productReducer } from '@products-module/store/product.reducer';
 import { routes } from './app.routes';
+import { LanguageInterceptor } from './core/interceptors/language.interceptor';
 import { ProductEffect } from './products-module/store/product.effect';
 import { customLoaderFactory } from './utils/custom-translater';
 
@@ -17,6 +18,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideHttpClient(
       withFetch(),
+      withInterceptors([LanguageInterceptor])
     ),
     provideStore({
       products: productReducer,

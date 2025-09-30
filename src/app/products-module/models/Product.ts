@@ -17,3 +17,7 @@ export enum ProductCategories {
   Accessories = 'Accessories',
   Monitors = 'Monitors'
 }
+
+export interface ProductsByLang {
+  [lang: string]: Product[];
+}

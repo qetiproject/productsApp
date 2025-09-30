@@ -1,16 +1,15 @@
-// import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-// import { Injectable } from '@angular/core';
-// import { TranslateService } from '@ngx-translate/core';
+import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 
-// @Injectable()
-// export class LanguageInterceptor implements HttpInterceptor {
-//   constructor(private translate: TranslateService) {}
+export const LanguageInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: HttpHandlerFn): Observable<any> => {
+  const translate = inject(TranslateService);
+  const lang = translate.currentLang ?? translate.getDefaultLang() ?? 'en';
 
-//   intercept(req: HttpRequest<any>, next: HttpHandler) {
-//     const lang = this.translate.currentLang || this.translate.getDefaultLang();
-//     const cloned = req.clone({
-//       setHeaders: { 'Accept-Language': lang }
-//     });
-//     return next.handle(cloned);
-//   }
-// }
+  const cloned = req.clone({
+    setHeaders: { 'Accept-Language': lang }
+  });
+
+  return next(cloned);
+};
