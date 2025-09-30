@@ -21,6 +21,7 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@products-module/*": ["src/app/products-module/*"],
+      "@products-module-pages": ["src/app/products-module/pages/index.ts"],
       "@components/*": ["src/app/components/*"],
       "@features/*": ["src/app/features/*"],
       "@core/*": ["src/app/core/*"],
