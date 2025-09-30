@@ -1,11 +1,12 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputSearch } from '@app/components/input-search/input-search';
 import { FilterPipe } from '@app/features/pipes/filter.pipe';
 import { ProductItemComponent } from '@app/products-module/components/product-item/product-item.component';
 import { Product } from '@app/products-module/models/Product';
 import { ProductFacade } from '@app/products-module/services/product.facade';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-list',
@@ -21,20 +22,19 @@ import { ProductFacade } from '@app/products-module/services/product.facade';
   ],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class ProductListComponent implements OnInit{
-  productsFacade = inject(ProductFacade)
+export class ProductListComponent {
+  productsFacade = inject(ProductFacade);
+  translate = inject(TranslateService);
+  
   searchTerm: string = '';
 
   getProductKeys(product: Product): string[] {
     return [product.name.toLowerCase(), product.category.toLowerCase()]
   }
-  
-  ngOnInit(): void {
-    this.getProducts()
-  }
 
-  getProducts(): void {
-    this.productsFacade.loadProducts()
+
+  onLanguageChange(lang: string) {
+    this.productsFacade.setLanguage(lang);
   }
 
   onSearchEvent(value: string) {

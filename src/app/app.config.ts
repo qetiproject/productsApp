@@ -1,13 +1,17 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from "@ngrx/store-devtools";
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { productReducer } from '@products-module/store/product.reducer';
 import { routes } from './app.routes';
+import { LanguageInterceptor } from './core/interceptors/language.interceptor';
+import { languageReducer } from './core/store/language/language.reducer';
 import { ProductEffect } from './products-module/store/product.effect';
+import { customLoaderFactory } from './utils/custom-translater';
 
 export const appConfig: ApplicationConfig = {
    providers: [
@@ -15,14 +19,25 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideHttpClient(
       withFetch(),
+      withInterceptors([LanguageInterceptor])
     ),
     provideStore({
       products: productReducer,
+      language: languageReducer
     }),
     provideEffects([ProductEffect]),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: false
     }),
+    importProvidersFrom([
+      TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: customLoaderFactory,
+          deps: [HttpClient],
+        },
+      }),
+    ]),
   ]
 };

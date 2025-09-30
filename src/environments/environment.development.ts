@@ -1,4 +1,4 @@
 export const environment = {
     production:  false,
-    baseUrl: '/assets/data/products.json'
+    baseUrl: '/assets/i18n/products.json'
 }
