@@ -1,28 +1,24 @@
-<!-- <h2>Products</h2>
-<input [(ngModel)]="filterText" />
-<button (click)="reload()">Reload</button>
-<ul>
-  <li *ngFor="let p of filtered()">
-    {{p.name}} - {{p.price}}
-    <button (click)="pick(p.id)">Pick</button>
-  </li>
-</ul> -->
-
 <h2 class="productsTitle">Products</h2>
+
 <app-input-search (search)="onSearchEvent($event)"></app-input-search>
 
-@if (loading$ | async ) {
-  <div  class="loading">
-    Loading products...
-  </div>
-}
+@let loading = productsFacade.loading$ | async;
+@let error = productsFacade.error$ | async;
+@let products = productsFacade.products$ | async;
 
-@let products = products$ | async;
+@if (loading) {
+  <div class="loading">Loading products...</div>
+} @else if (error) {
+  <p class="error">{{ error }}</p>
+} @else if (products?.length) {
   <ul class="products">
-    @for ( product of products | filter: searchTerm: getProductKeys;; track product.id) {
-      <app-product-item 
-        [product]="product" 
+    @for (product of products | filter: searchTerm: getProductKeys; track product.id) {
+      <app-product-item
+        [product]="product"
         (delete)="onDeleteProductEvent($event)">
       </app-product-item>
     }
-</ul>
+  </ul>
+} @else {
+  <p class="empty">No products found.</p>
+}

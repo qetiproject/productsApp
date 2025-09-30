@@ -8,7 +8,12 @@ export const selectAllProducts = createSelector(
   (state: ProductState) => state.products
 );
 
-export const selectLoading = createSelector(
+export const selectLoadingProducts = createSelector(
   selectProductState,
   (state: ProductState) => state.loading
 );
+
+export const selectErrorProducts = createSelector(
+  selectProductState,
+  (state: ProductState) => state.error
+)

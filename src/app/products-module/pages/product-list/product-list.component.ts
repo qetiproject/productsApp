@@ -5,10 +5,7 @@ import { InputSearch } from '@app/components/input-search/input-search';
 import { FilterPipe } from '@app/features/pipes/filter.pipe';
 import { ProductItemComponent } from '@app/products-module/components/product-item/product-item.component';
 import { Product } from '@app/products-module/models/Product';
-import { deleteProduct, loadProducts } from '@app/products-module/store/product.action';
-import { selectAllProducts, selectLoading } from '@app/products-module/store/product.selector';
-import { Store } from '@ngrx/store';
-import { distinctUntilChanged, first, tap } from 'rxjs/operators';
+import { ProductFacade } from '@app/products-module/services/product.facade';
 
 @Component({
   selector: 'app-product-list',
@@ -25,13 +22,7 @@ import { distinctUntilChanged, first, tap } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class ProductListComponent implements OnInit{
-  store = inject(Store);
-  products$ = this.store.select(selectAllProducts).pipe(
-    distinctUntilChanged((a, b) => a.length === b.length),
-    tap(p => document.title = 'Count: ' + p.length)
-  )
-  loading$ = this.store.select(selectLoading);
-  
+  productsFacade = inject(ProductFacade)
   searchTerm: string = '';
 
   getProductKeys(product: Product): string[] {
@@ -43,11 +34,7 @@ export class ProductListComponent implements OnInit{
   }
 
   getProducts(): void {
-    this.store.select(selectAllProducts).pipe(first()).subscribe(products => {
-      if (!products.length) {
-        this.store.dispatch(loadProducts());
-      }
-    });
+    this.productsFacade.loadProducts()
   }
 
   onSearchEvent(value: string) {
@@ -55,6 +42,6 @@ export class ProductListComponent implements OnInit{
   }
 
   onDeleteProductEvent(product: Product) {
-     this.store.dispatch(deleteProduct({ id: product.id}));
+    this.productsFacade.deleteProduct(product.id);
   }
 }
