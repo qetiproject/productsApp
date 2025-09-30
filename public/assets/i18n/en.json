@@ -1,1 +1,5 @@
-{ "app": { "title": "My Angular App" } }
+{ "products": [
+  { "id": 1, "name": "Ultra Phone X", "price": 999.99, "category": "Phones", "stock": 5, "rating": 4.1, "lang": "en" },
+  { "id": 2, "name": "Ultra Phone X", "price": 999.99, "category": "Phones", "stock": 4, "rating": 4.2, "lang": "en" }
+]
+ }

@@ -6,6 +6,7 @@ import { FilterPipe } from '@app/features/pipes/filter.pipe';
 import { ProductItemComponent } from '@app/products-module/components/product-item/product-item.component';
 import { Product } from '@app/products-module/models/Product';
 import { ProductFacade } from '@app/products-module/services/product.facade';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-list',
@@ -22,7 +23,9 @@ import { ProductFacade } from '@app/products-module/services/product.facade';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class ProductListComponent implements OnInit{
-  productsFacade = inject(ProductFacade)
+  productsFacade = inject(ProductFacade);
+  translate = inject(TranslateService);
+  
   searchTerm: string = '';
 
   getProductKeys(product: Product): string[] {
@@ -34,7 +37,8 @@ export class ProductListComponent implements OnInit{
   }
 
   getProducts(): void {
-    this.productsFacade.loadProducts()
+    const lang = this.translate.currentLang ?? this.translate.getDefaultLang() ?? 'en'
+    this.productsFacade.loadProducts(lang)
   }
 
   onSearchEvent(value: string) {

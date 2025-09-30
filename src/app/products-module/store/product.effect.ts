@@ -12,10 +12,12 @@ export class ProductEffect {
   loadProducts$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadProducts),
-      switchMap(() =>
-        this.productService.getProducts().pipe(
-          map((products) => loadProductsSuccess({ products })), 
-          catchError((error) => of(loadProductsFailure({ error })))
+      switchMap((action) =>
+        this.productService.getProducts(action.lang).pipe(
+          map((products) => loadProductsSuccess({ products })),
+          catchError((error) =>
+            of(loadProductsFailure({ error: error.message || 'Unknown error' }))
+          )
         )
       )
     )

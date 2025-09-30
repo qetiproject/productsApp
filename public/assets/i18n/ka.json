@@ -1,1 +1,6 @@
-{ "app": { "title": "ჩემი Angular აპლიკაცია" } }
+{
+  "products": [
+    { "id": 1, "name": "Ultra ტელეფონი X", "price": 999.99, "category": "ტელეფონები", "stock": 5, "rating": 4.1 },
+    { "id": 2, "name": "Ultra ტელეფონი X", "price": 999.99, "category": "ტელეფონები", "stock": 4, "rating": 4.2 }
+  ]
+}
