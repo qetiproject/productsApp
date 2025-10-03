@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'variables' as *;
+
+.input{
+  padding: $input-padding-vertical $input-padding-horizontal;
+  border: $input-border;
+  border-radius: $input-border-radius;
+  outline: none;
+  margin-bottom: $input-margin-bottom;
+  transition: border-color $transition-speed;
+
+  &:focus {
+    border-color: $border-color;
+  }
+}

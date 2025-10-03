@@ -7,7 +7,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs';
   selector: 'app-input-search',
   standalone: true,
   imports: [ReactiveFormsModule],
-  template: `<input type="text" [formControl] ="searchControl"/>`,
+  template: `<input class="input" type="text" [formControl] ="searchControl"/>`,
   styleUrls: ['./input-search.scss']
 })
 export class InputSearch{
