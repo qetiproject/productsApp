@@ -2,6 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputSearch } from '@app/components/input-search/input-search';
+import { CurrentLangEnum } from '@app/core/store/language/language.state';
 import { FilterPipe } from '@app/features/pipes/filter.pipe';
 import { ProductItemComponent } from '@app/products-module/components/product-item/product-item.component';
 import { Product } from '@app/products-module/models/Product';
@@ -33,7 +34,7 @@ export class ProductListComponent {
   }
 
 
-  onLanguageChange(lang: string) {
+  onLanguageChange(lang: CurrentLangEnum) {
     this.productsFacade.setLanguage(lang);
   }
 

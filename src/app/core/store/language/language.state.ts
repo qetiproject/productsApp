@@ -1,7 +1,11 @@
 export interface LanguageState {
-  currentLang: string;
+  currentLang: CurrentLangEnum;
 }
 
+export enum CurrentLangEnum {
+  'Ka' = 'ka',
+  'En' ='en'
+}
 export const initialLanguageState: LanguageState = {
-  currentLang: 'ka',
+  currentLang: CurrentLangEnum.Ka,
 };

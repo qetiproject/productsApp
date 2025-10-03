@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { CurrentLangEnum } from '@app/core/store/language/language.state';
 import { Product } from '@app/products-module/models/Product';
 import { map, Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
@@ -17,7 +18,7 @@ export class ProductService {
   loadProducts(lang: string): void {
     this.#http
       .get<{ [key: string]: Product[] }>(`${environment.baseUrl}`)
-      .pipe(map(res => res[lang] ?? res['ka']))
+      .pipe(map(res => res[lang] ?? res[CurrentLangEnum.Ka]))
       .subscribe(products => this.#productsSubject.next(products));
   }
 

@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { setLanguage } from '@app/core/store/language/language.actions';
 import { selectCurrentLanguage } from '@app/core/store/language/language.selector';
+import { CurrentLangEnum } from '@app/core/store/language/language.state';
 import { Store } from '@ngrx/store';
 import { distinctUntilChanged, Observable, tap } from 'rxjs';
 import { deleteProduct, loadProducts } from '../store/product.action';
@@ -25,7 +26,7 @@ export class ProductFacade {
     });
   }
 
-  setLanguage(lang: string) {
+  setLanguage(lang: CurrentLangEnum) {
     this.#store.dispatch(setLanguage({ lang }));
   }
 
